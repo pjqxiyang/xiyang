@@ -1,0 +1,28 @@
+spring:
+  datasource:
+    druid:
+      url: jdbc:mysql://192.168.16.129:3306/xy_blog?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf8
+      username: root
+      password: xiyang
+      driver-class-name: com.mysql.jdbc.Driver
+      initialSize: 5
+      minIdle: 5
+      maxActive: 20
+      maxWait: 10000
+      testOnBorrow: true
+      testOnReturn: false
+      timeBetweenEvictionRunsMillis: 60000
+      minEvictableIdleTimeMillis: 300000
+  servlet:
+    multipart:
+      max-file-size: 50MB
+      max-request-size: 100MB
+  redis:
+    host: 192.168.16.129
+    port: 6379
+mybatis:
+  mapper-locations: classpath:mapper/*Mapper.xml
+  type-aliases-package: com.xy.blog
+
+server:
+  port: 8080
