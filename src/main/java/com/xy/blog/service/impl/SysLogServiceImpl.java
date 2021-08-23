@@ -8,6 +8,8 @@ import com.xy.blog.utils.IdWorkerUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.SQLOutput;
+
 /**
  * @Author: 夕阳
  * @Date: 2021/8/16 15:20
@@ -27,5 +29,9 @@ public class SysLogServiceImpl implements SysLogService {
         sysLog.setCreatedBy("admin");
         sysLogMapper.save(sysLog);
     }
+
+    private String userName;
+
+    private String password;
 
 }
