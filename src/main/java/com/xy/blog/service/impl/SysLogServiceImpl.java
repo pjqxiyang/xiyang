@@ -28,7 +28,4 @@ public class SysLogServiceImpl implements SysLogService {
         sysLogMapper.save(sysLog);
     }
 
-    public void test(){
-
-    }
 }
