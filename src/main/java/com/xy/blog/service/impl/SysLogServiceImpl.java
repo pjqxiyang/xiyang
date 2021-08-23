@@ -27,4 +27,8 @@ public class SysLogServiceImpl implements SysLogService {
         sysLog.setCreatedBy("admin");
         sysLogMapper.save(sysLog);
     }
+
+    public void test(){
+
+    }
 }
