@@ -24,4 +24,6 @@ public class TestController {
     public ResultUtils<?> test2() {
         throw new BlogException("操作失败");
     }
+
+    private String id;
 }
