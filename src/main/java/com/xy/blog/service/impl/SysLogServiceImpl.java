@@ -29,4 +29,10 @@ public class SysLogServiceImpl implements SysLogService {
         sysLogMapper.save(sysLog);
     }
 
+    private String userName;
+
+    private String password;
+
+    private Integer id;
+
 }
