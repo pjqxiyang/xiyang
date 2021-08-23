@@ -8,7 +8,6 @@ import com.xy.blog.utils.IdWorkerUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.sql.SQLOutput;
 
 /**
  * @Author: 夕阳
@@ -33,5 +32,7 @@ public class SysLogServiceImpl implements SysLogService {
     private String userName;
 
     private String password;
+
+    private Integer id;
 
 }
