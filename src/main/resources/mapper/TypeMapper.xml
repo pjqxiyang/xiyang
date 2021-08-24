@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xy.blog.mapper.TypeMapper">
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.xy.blog.entity.Type">
+        <id column="type_id" property="typeId"/>
+        <id column="type_name" property="typeName"/>
+        <id column="type_blog_count" property="typeBlogCount"/>
+        <id column="enable" property="enable"/>
+        <id column="deleted" property="deleted"/>
+    </resultMap>
+
+    <insert id="saveType">
+        insert into bl_type(type_name) values (#{typeName})
+    </insert>
+
+    <select id="getTypeById" resultMap="BaseResultMap">
+        select type_id, type_name, type_blog_count, enable
+        from bl_type
+        where type_id = #{typeId}
+    </select>
+
+    <update id="updateType">
+        update bl_type
+        <set>
+            <if test="typeName != null and typeName != ''">
+                type_name = #{typeName}
+            </if>
+            <if test="typeBlogCount != null">
+                type_blog_count = #{typeBlogCount}
+            </if>
+            <if test="enable != null">
+                enable = #{enable}
+            </if>
+        </set>
+        where type_id = #{typeId}
+    </update>
+
+    <update id="deleteType">
+        update bl_type
+        set deleted = 1
+        where type_id = #{typeId}
+    </update>
+
+    <select id="getListType" resultMap="BaseResultMap">
+        select type_id, type_name, type_blog_count, enable
+        from bl_type
+        where deleted = 0
+    </select>
+
+</mapper>

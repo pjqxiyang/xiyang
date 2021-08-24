@@ -19,7 +19,8 @@ public enum ResultEnum {
     PARAMS_NULL(40002, "参数不能为空！"),
     PARAMS_ERROR(40005, "参数不合法！"),
 
-    NOT_LOGIN(40003, "当前账号未登录！")
+    NOT_LOGIN(40003, "当前账号未登录！"),
+    LOGIN_PARAM_ERROR(40004, "用户名密码错误")
     ;
     private Integer code;
     private String msg;
