@@ -1,7 +1,6 @@
 package com.xy.blog.controller;
 
 import com.xy.blog.entity.Type;
-import com.xy.blog.enums.ResultEnum;
 import com.xy.blog.service.TypeService;
 import com.xy.blog.utils.ResultUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +27,7 @@ public class typeController {
     @RequestMapping(value = "/saveType",method = RequestMethod.POST)
     public ResultUtils<?> save(@RequestBody Type type){
         typeService.saveType(type);
-        return new ResultUtils<>("保存成功");
+        return new ResultUtils<>();
     }
 
     /**
@@ -50,7 +49,7 @@ public class typeController {
     @RequestMapping(value = "/updateType",method = RequestMethod.POST)
     public ResultUtils<?> updateType(@RequestBody Type type){
         typeService.updateType(type);
-        return new ResultUtils<>("修改成功");
+        return new ResultUtils<>();
     }
 
     /**
@@ -61,7 +60,7 @@ public class typeController {
     @RequestMapping(value = "/deleteType/{typeId}",method = RequestMethod.DELETE)
     public ResultUtils<?> deleteType(@PathVariable Long typeId){
         typeService.deleteType(typeId);
-        return new ResultUtils<>("删除成功");
+        return new ResultUtils<>();
     }
 
 

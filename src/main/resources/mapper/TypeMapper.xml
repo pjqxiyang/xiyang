@@ -24,13 +24,13 @@
         update bl_type
         <set>
             <if test="typeName != null and typeName != ''">
-                type_name = #{typeName}
+                type_name = #{typeName},
             </if>
             <if test="typeBlogCount != null">
-                type_blog_count = #{typeBlogCount}
+                type_blog_count = #{typeBlogCount},
             </if>
             <if test="enable != null">
-                enable = #{enable}
+                enable = #{enable},
             </if>
         </set>
         where type_id = #{typeId}

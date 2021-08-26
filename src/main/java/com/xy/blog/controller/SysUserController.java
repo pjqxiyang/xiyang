@@ -2,8 +2,10 @@ package com.xy.blog.controller;
 
 
 import com.xy.blog.entity.SysUser;
+import com.xy.blog.entity.dto.PasswordDTO;
 import com.xy.blog.entity.vo.TokenVo;
 import com.xy.blog.enums.ResultEnum;
+import com.xy.blog.service.SysUserService;
 import com.xy.blog.utils.ResultUtils;
 import com.xy.blog.utils.ShiroUtils;
 import com.xy.blog.utils.StringUtils;
@@ -11,6 +13,7 @@ import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationToken;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,9 +35,11 @@ public class SysUserController {
     @Resource
     private RedisTemplate<String, Object> redisTemplate;
 
+    @Autowired
+    private SysUserService sysUserService;
+
     /**
      * 登录，返回token
-     *
      * @param sysUser
      * @return
      */
@@ -58,7 +63,6 @@ public class SysUserController {
 
     /**
      * 获取当前登录用户
-     *
      * @return
      */
     @RequestMapping(value = "/info", method = RequestMethod.GET)
@@ -70,7 +74,6 @@ public class SysUserController {
 
     /**
      * 退出登录
-     *
      * @return
      */
     @RequestMapping(value = "/logout", method = RequestMethod.GET)
@@ -78,6 +81,28 @@ public class SysUserController {
         Subject subject = SecurityUtils.getSubject();
         subject.logout();
         return new ResultUtils<>("退出成功！");
+    }
+
+    /**
+     * 修改个人信息
+     * @param sysUser
+     * @return
+     */
+    @RequestMapping(value = "/updateSysUser",method = RequestMethod.POST)
+    public ResultUtils<?> updateSysUser(@RequestBody SysUser sysUser){
+        sysUserService.updateSysUsesr(sysUser);
+        return new ResultUtils<>();
+    }
+
+    /**
+     * 修改密码
+     * @param passwordDTO
+     * @return
+     */
+    @RequestMapping(value = "/updatePwd",method = RequestMethod.POST)
+    public ResultUtils<?> updatePwd(@RequestBody PasswordDTO passwordDTO){
+        sysUserService.updatePwd(passwordDTO);
+        return new ResultUtils<>();
     }
 
 }

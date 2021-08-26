@@ -1,6 +1,7 @@
 package com.xy.blog.mapper;
 
 import com.xy.blog.entity.SysUser;
+import com.xy.blog.entity.dto.PasswordDTO;
 import org.springframework.stereotype.Component;
 
 /**
@@ -16,4 +17,25 @@ public interface SysUserMapper {
      * @return
      */
     SysUser getByUsername(String username);
+
+    /**
+     * 根据id获取个人信息
+     * @param id
+     * @return
+     */
+    SysUser getSysUserById(Long id);
+
+    /**
+     * 修改密码
+     * @param passwordDTO
+     * @return
+     */
+    int updatePwd(PasswordDTO passwordDTO);
+
+    /**
+     * 修改个人信息
+     * @param sysUser
+     * @return
+     */
+    int updateSysUser(SysUser sysUser);
 }

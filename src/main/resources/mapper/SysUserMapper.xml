@@ -23,4 +23,40 @@
         where username = #{username}
     </select>
 
+    <select id="getSysUserById" resultMap="BaseResultMap">
+        select id,
+               name,
+               header,
+               signature,
+               comment,
+               username,
+               password
+        from bl_sys_user
+        where id = #{id}
+    </select>
+
+    <update id="updateSysUser">
+        update bl_sys_user
+        <set>
+            <if test="name != null and name != ''">
+                name = #{name},
+            </if>
+            <if test="header != null and header != ''">
+                header = #{header},
+            </if>
+            <if test="signature != null and signature != ''">
+                signature = #{signature},
+            </if>
+            <if test="comment != null and comment != ''">
+                `comment` = #{comment},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <update id="updatePwd">
+        update bl_sys_user set password = #{newPwd}
+        where id = #{id}
+    </update>
+
 </mapper>
