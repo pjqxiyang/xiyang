@@ -19,13 +19,6 @@ public interface SysUserMapper {
     SysUser getByUsername(String username);
 
     /**
-     * 根据id获取个人信息
-     * @param id
-     * @return
-     */
-    SysUser getSysUserById(Long id);
-
-    /**
      * 修改密码
      * @param passwordDTO
      * @return

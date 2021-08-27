@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xy.blog.mapper.LinkMapper">
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.xy.blog.entity.Link">
+        <id column="link_id" property="linkId"/>
+        <id column="link_name" property="linkName"/>
+        <id column="link_url" property="linkUrl"/>
+        <id column="created_time" property="createdTime"/>
+        <id column="update_time" property="updateTime"/>
+        <id column="deleted" property="deleted"/>
+    </resultMap>
+
+    <insert id="saveLink">
+        insert into bl_link(link_name, link_url) values (#{linkName}, #{linkUrl})
+    </insert>
+
+    <select id="getLinkById" resultMap="BaseResultMap">
+        select link_id, link_name, link_url, created_time, update_time
+        from bl_link
+        where link_id = #{linkId}
+    </select>
+
+    <update id="updateLink">
+        update bl_link
+        <set>
+            <if test="linkName != null and linkName != ''">
+                link_name = #{linkName},
+            </if>
+            <if test="linkUrl != null and linkUrl != ''">
+                link_url = #{linkUrl},
+            </if>
+        </set>
+        where link_id = #{linkId}
+    </update>
+
+    <update id="deleteLink">
+        update bl_link
+        set deleted = 1
+        where link_id = #{linkId}
+    </update>
+
+    <select id="getListLink" resultMap="BaseResultMap">
+        select link_id, link_name, link_url, created_time, update_time
+        from bl_link
+        where deleted = 0
+    </select>
+
+</mapper>

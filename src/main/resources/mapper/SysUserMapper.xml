@@ -23,18 +23,6 @@
         where username = #{username}
     </select>
 
-    <select id="getSysUserById" resultMap="BaseResultMap">
-        select id,
-               name,
-               header,
-               signature,
-               comment,
-               username,
-               password
-        from bl_sys_user
-        where id = #{id}
-    </select>
-
     <update id="updateSysUser">
         update bl_sys_user
         <set>

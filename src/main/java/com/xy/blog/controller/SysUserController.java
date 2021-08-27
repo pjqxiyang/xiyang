@@ -90,7 +90,7 @@ public class SysUserController {
      */
     @RequestMapping(value = "/updateSysUser",method = RequestMethod.POST)
     public ResultUtils<?> updateSysUser(@RequestBody SysUser sysUser){
-        sysUserService.updateSysUsesr(sysUser);
+        sysUserService.updateSysUser(sysUser);
         return new ResultUtils<>();
     }
 

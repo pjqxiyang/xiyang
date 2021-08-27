@@ -22,7 +22,7 @@ public interface SysUserService {
      * 修改个人信息
      * @param sysUser
      */
-    void updateSysUsesr(SysUser sysUser);
+    void updateSysUser(SysUser sysUser);
 
     /**
      * 修改密码
